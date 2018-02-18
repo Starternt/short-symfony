@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    {{ form_start(form) }}
+    {% if valid_error_origin is defined %}
+        <div class="alert alert-danger error"><strong>Введён недействительный адрес! </strong></div>
+    {% endif %}
+    {{ form_row(form.original_url, {'attr' : {'placeholder' : 'Paste a link to shorten it'}}) }}
+    {{ form_row(form.submit) }}
+
+    <label>Or you can type desired URL</label>
+
+    {% if valid_error_desired is defined %}
+        <div class="alert alert-danger error"><strong>Введённый URL уже занят! </strong></div>
+    {% endif %}
+
+    {{ form_row(form.desired_url, {'attr' : {'placeholder' : 'Desired URL'}}) }}
+    <div class="imitate"></div>
+    {{ form_end(form) }}
+    {% if url == true %}
+        <div class="alert alert-success error">Успешно! Для вас сгенерирован следующий адрес:
+            <strong>{{ server  }}/{{ url }}</strong>
+        </div>
+    {% endif %}
+{% endblock %}

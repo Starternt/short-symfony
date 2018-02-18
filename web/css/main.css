@@ -1,0 +1,83 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form > div {
+    display: inline-block;
+}
+
+form{
+    text-align: center;
+}
+input {
+    border: 0;
+    min-height: 60px;
+    min-width: 600px;
+    display: inline-block;
+    font-size: 22px;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 25px;
+}
+
+form > div:nth-child(2){
+    position: relative;
+    bottom: 2px;
+}
+
+button[type="submit"] {
+    min-height: 60px;
+    min-width: 120px;
+    background-color: #fc772a;
+    color: #f6f6f6;
+    display: inline-block;
+    border: 0;
+    font-size: 18px;
+}
+
+button[type="submit"]:focus {
+    outline: none;
+}
+
+button[type="submit"]:hover {
+    background-color: #f15f26;
+}
+
+input:focus {
+    outline-color: orangered;
+}
+
+label {
+    display: block;
+    color: #f6f6f6;
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.jumbotron {
+    background-color: darkgray;
+}
+
+.imitate {
+    display: inline-block;
+    min-height: 60px;
+    min-width: 120px;
+}
+
+.container h1 {
+    color: #fff; !important;
+}
+.error{
+    margin: 0;
+    margin-right: 120px;
+    min-width: 600px;
+}
