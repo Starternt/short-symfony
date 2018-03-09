@@ -1,7 +1,24 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
+    margin-bottom: 60px;
+    /*height: 100%;*/
+    background-color: darkgray;
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+#footer {
+    color: #9d9d9d;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #222;
+    border-top: 3px solid;
+    border-color: darkred;
 }
 
 h1 {
@@ -65,6 +82,7 @@ label {
 
 .jumbotron {
     background-color: darkgray;
+    margin-bottom: 0;
 }
 
 .imitate {

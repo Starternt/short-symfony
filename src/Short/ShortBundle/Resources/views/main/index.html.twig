@@ -16,10 +16,11 @@
 
     {{ form_row(form.desired_url, {'attr' : {'placeholder' : 'Desired URL'}}) }}
     <div class="imitate"></div>
-    {{ form_end(form) }}
     {% if url == true %}
         <div class="alert alert-success error">Успешно! Для вас сгенерирован следующий адрес:
             <strong>{{ server  }}/{{ url }}</strong>
         </div>
     {% endif %}
+    {{ form_end(form) }}
+
 {% endblock %}
