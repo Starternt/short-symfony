@@ -43,20 +43,10 @@ class ShortController extends Controller
             }
 
             if ($desired_url == null || empty($desired_url)) {
-                do {
-                    $url = Check::generateUrlS();
-                    $db_url = $em->getRepository('ShortShortBundle:Short')->findOneBy(array('short_url' => $url));
-                    if (!$db_url) {
-                        $short->setOriginalUrl($original_url);
-                        $short->setShortUrl($url);
-                        $short->setUses(0);
-                        $em->persist($short);
-                        $em->flush();
+                $url = Check::saveUrl($original_url, $em, $short);
 
-                        return $this->render('ShortShortBundle:main:index.html.twig', array('form' => $form->createView(),
-                            'url' => $url, 'server' => $_SERVER['SERVER_NAME']));
-                    }
-                } while ($db_url);
+                return $this->render('ShortShortBundle:main:index.html.twig', array('form' => $form->createView(),
+                    'url' => $url, 'server' => $_SERVER['SERVER_NAME']));
             } else {
                 $isUrlExists = $em->getRepository('ShortShortBundle:Short')->findOneBy(array('short_url' => $desired_url));
                 if (!$isUrlExists) {

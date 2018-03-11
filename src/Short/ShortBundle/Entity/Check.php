@@ -25,4 +25,20 @@ class Check
         return substr(md5(uniqid()), 0, 6);
     }
 
+    public static function saveUrl($original_url ,$em, $short){
+        do {
+            $url = Check::generateUrlS();
+            $db_url = $em->getRepository('ShortShortBundle:Short')->findOneBy(array('short_url' => $url));
+            if (!$db_url) {
+                $short->setOriginalUrl($original_url);
+                $short->setShortUrl($url);
+                $short->setUses(0);
+                $em->persist($short);
+                $em->flush();
+
+            }
+        } while ($db_url);
+        return $url;
+    }
+
 }
