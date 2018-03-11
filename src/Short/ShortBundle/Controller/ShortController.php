@@ -30,8 +30,6 @@ class ShortController extends Controller
         $form = $this->createForm(ShortType::class);
         $form->handleRequest($request);
 
-        $valid_error_origin = false;
-
         if ($form->isSubmitted() && $form->isValid()) {
             $original_url = $form->get('original_url')->getData();
             $desired_url = $form->get('desired_url')->getData();
@@ -60,7 +58,6 @@ class ShortController extends Controller
                         'valid_error_desired' => true, 'url' => false, 'server' => $_SERVER['SERVER_NAME']));
                 }
             }
-
         }
 
         return $this->render('ShortShortBundle:main:index.html.twig', array('form' => $form->createView(),
@@ -80,7 +77,7 @@ class ShortController extends Controller
         $requestedUrl = $em->getRepository('ShortShortBundle:Short')->findOneBy(array('short_url' => $url));
         if (!$requestedUrl) {
             throw $this->createNotFoundException(
-                'No product found for URL:  ' . $url
+                'URL not found:  ' . $url
             );
         } else {
             $uses = $requestedUrl->getUses() + 1;
