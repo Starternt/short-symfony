@@ -50,12 +50,7 @@ class ShortController extends Controller
             } else {
                 $isUrlExists = $em->getRepository('ShortShortBundle:Short')->findOneBy(array('short_url' => $desired_url));
                 if (!$isUrlExists) {
-                    $short->setOriginalUrl($original_url);
-                    $short->setShortUrl($desired_url);
-                    $short->setUses(0);
-
-                    $em->persist($short);
-                    $em->flush();
+                    $desired_url = Check::saveUrl($original_url, $em, $short, $desired_url);
 
                     return $this->render('ShortShortBundle:main:index.html.twig', array('form' => $form->createView(),
                         'url' => $desired_url, 'server' => $_SERVER['SERVER_NAME']));
