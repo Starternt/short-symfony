@@ -1,13 +1,14 @@
 <?php
 
-namespace Short\ShortBundle\Entity;
+namespace Short\ShortBundle\Services;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class Check
 {
-    public static function validateUrl($original_url)
+
+    public function validateUrl($original_url)
     {
         $response_code = @get_headers($original_url);
         $check_code = preg_match('/([4-5]{1}[0-9]{2})/', $response_code[0]);
@@ -20,15 +21,15 @@ class Check
     }
 
 
-    public static function generateUrlS()
+    public function generateUrlS()
     {
         return substr(md5(uniqid()), 0, 6);
     }
 
-    public static function saveUrl($original_url ,$em, $short, $isDesired = 0){
+    public function saveUrl($original_url ,$em, $short, $isDesired = 0){
         do {
             if(!$isDesired){
-                $url = Check::generateUrlS();
+                $url = $this->generateUrlS();
             } else {
                 $url = $isDesired;
             }
