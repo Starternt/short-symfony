@@ -4,7 +4,6 @@ Possibilities:
 - also you may type a desired URL and if this one will be available you will get it;
 - application contains amount of uses shorten urls in DB;
 If you need to remove URLs from DB through some days you can add this event for DB (SQL):
-  DROP EVENT `e_15days`; 
   CREATE DEFINER=`root`@`%` EVENT `e_15days` 
   ON SCHEDULE EVERY 1 DAY STARTS '2018-02-23 01:23:11' 
   ON COMPLETION NOT PRESERVE ENABLE 
